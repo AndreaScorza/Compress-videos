@@ -1,16 +1,16 @@
 #!/bin/bash
 
 # Input folder containing videos
-input_folder="Downloads/my_video"
+input_folder="/home/work/Desktop/my_videos"
 
 # Output folder for compressed videos
-output_folder="Desktop/compressed_videos"
+output_folder="/home/work/Desktop/compressed_videos"
 
 # Create output folder if it doesn't exist
 mkdir -p "$output_folder"
 
 # Iterate through each video file in the input folder
-for video_file in "$input_folder"/*.mp4; do
+for video_file in "$input_folder"/*.MP4; do
     # Get the filename without extension
     filename=$(basename -- "$video_file")
     filename_no_ext="${filename%.*}"
