@@ -40,9 +40,9 @@ for video_file in "${video_files[@]}"; do
 
     echo "[$count/$total] Compressing '$filename'..."
 
-    # Execute FFmpeg command to compress the video, preserving resolution,
+    # Execute FFmpeg command to compress and resize the video,
     # reporting machine-readable progress on stdout for the bar below
-    ffmpeg -y -i "$video_file" -c:v libx265 -crf 20 -preset medium -x265-params log-level=none -map_metadata 0 \
+    ffmpeg -y -i "$video_file" -c:v libx265 -crf 20 -preset ultrafast -vf "scale=1920:1080" -x265-params log-level=none -map_metadata 0 \
         -progress pipe:1 -nostats -loglevel error "$compressed_video" |
     while IFS='=' read -r key value; do
         case "$key" in
